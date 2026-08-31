@@ -1,21 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import React from 'react';
 
 export function Presentation() {
   // Personal information
   const profile = {
-    name: 'Yuvraj Singh',
-    age: '23 years old',
-    location: 'Gurugram, India',
-    // Add a newline character after the emoji
+    name: '吴汇森（Lucas Wu）',
+    role: '高级前端开发工程师 · 5+ 年经验',
     description:
-      "Hey 👋\nI'm Yuvraj also known as Yuvi, building AI-powered experiences that talk back, think with you, and make static tech feel alive.",
-    src: '/profile-yuvi-03.jpeg',
-    fallbackSrc:
-      'https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3',
+      '专注 Vue3、TypeScript、React、Next.js 与前端工程化，具备企业级后台、云平台、数据可视化、响应式官网和 AI 应用交付经验。',
+    src: 'https://avatars.githubusercontent.com/u/65402909?v=4',
   };
 
   // Animation variants for text elements
@@ -54,24 +49,17 @@ export function Presentation() {
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
               className="h-full w-full"
             >
-              <Image
+              <img
                 src={profile.src}
                 alt={profile.name}
-                width={500}
-                height={500}
                 className="h-full w-full object-cover object-center"
-                onError={(e) => {
-                  // Fallback to placeholder if image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.src = profile.fallbackSrc;
-                }}
               />
             </motion.div>
           </div>
         </div>
 
         {/* Text content section */}
-        <div className="flex flex-col space-y">
+        <div className="space-y flex flex-col">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -81,9 +69,7 @@ export function Presentation() {
               {profile.name}
             </h1>
             <div className="mt-1 flex flex-col gap-1 md:flex-row md:items-center md:gap-4">
-              <p className="text-muted-foreground">{profile.age}</p>
-              <div className="bg-border hidden h-1.5 w-1.5 rounded-full md:block" />
-              <p className="text-muted-foreground">{profile.location}</p>
+              <p className="text-muted-foreground">{profile.role}</p>
             </div>
           </motion.div>
 
@@ -103,16 +89,20 @@ export function Presentation() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-4 flex flex-wrap gap-2"
           >
-            {['AI', 'Developer', 'Sport', 'SaaS Builder'].map(
-              (tag) => (
-                <span
-                  key={tag}
-                  className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-sm"
-                >
-                  {tag}
-                </span>
-              )
-            )}
+            {[
+              'Vue3',
+              'TypeScript',
+              'React',
+              'Next.js',
+              'Frontend Engineering',
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-sm"
+              >
+                {tag}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>

@@ -1,13 +1,11 @@
-
-import { tool } from "ai";
-import { z } from "zod";
-
+import { tool } from 'ai';
+import { z } from 'zod';
 
 export const getSports = tool({
   description:
-    "This tool will show some photos of Yuvi riding his bike",
+    'This legacy tool is currently disabled while personal media is being updated',
   parameters: z.object({}),
   execute: async () => {
-    return "Here my some pictures of me enjoying a bike ride!";
+    return 'Here my some pictures of me enjoying a bike ride!';
   },
 });

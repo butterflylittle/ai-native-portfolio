@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/dialog';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation'; // Importation correcte pour Next.js 13+
 import { useState } from 'react';
 
@@ -30,14 +29,8 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
       className="h-auto w-auto cursor-pointer rounded-2xl bg-white/30 p-3 shadow-lg backdrop-blur-lg hover:bg-white/60 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
       onClick={() => setIsOpen(true)}
     >
-      <Image
-        src="/logo-yuvi.svg"
-        width={100}
-        height={100}
-        alt="Logo"
-        className="w-6 md:w-8"
-      />
-      <span className="sr-only">About Yuvi</span>
+      <span className="text-base font-bold md:text-lg">LW</span>
+      <span className="sr-only">About Lucas Wu</span>
     </Button>
   );
 
@@ -69,7 +62,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
             <DialogHeader className="relative flex flex-row items-start justify-between px-8 pt-8 pb-6">
               <div>
                 <DialogTitle className="flex items-center gap-2 text-4xl font-bold tracking-tight">
-                  Welcome to Yuvraj's AI Portfolio
+                  Welcome to Lucas Wu's AI Portfolio
                 </DialogTitle>
                 <DialogDescription className="mt-2 text-base">
                   {/*My interactive AI portfolio experience*/}
@@ -129,14 +122,14 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
               >
                 Start Chatting
               </Button>
-              <div
-                className="mt-6 flex cursor-pointer flex-wrap gap-1 text-center text-sm"
-              >
+              <div className="mt-6 flex cursor-pointer flex-wrap gap-1 text-center text-sm">
                 <p className="text-muted-foreground">
                   If you love it, please share it! Feedback is always welcome.
                 </p>
-                <div className="flex cursor-pointer items-center text-blue-500 hover:underline" 
-                onClick={handleContactMe}>
+                <div
+                  className="flex cursor-pointer items-center text-blue-500 hover:underline"
+                  onClick={handleContactMe}
+                >
                   Contact me.
                 </div>
               </div>

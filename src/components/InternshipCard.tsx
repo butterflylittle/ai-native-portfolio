@@ -1,14 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, Code2, Globe, MapPin } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Briefcase, Code2, GraduationCap } from 'lucide-react';
 
 const InternshipCard = () => {
   const openMail = () => {
-    window.open('mailto:yuvraj0412s@gmail.com', '_blank');
+    window.open('mailto:13710610218@163.com', '_blank');
   };
-  const router = useRouter();
 
   return (
     <motion.div
@@ -23,17 +21,17 @@ const InternshipCard = () => {
           {/* Avatar */}
           <div className="bg-muted h-16 w-16 overflow-hidden rounded-full shadow-md">
             <img
-              src="/profile-yuvi.jpg"
-              alt="Yuvraj's avatar"
+              src="https://avatars.githubusercontent.com/u/65402909?v=4"
+              alt="Lucas Wu's avatar"
               className="h-full w-full object-cover"
             />
           </div>
           <div>
             <h2 className="text-foreground text-2xl font-semibold">
-              Yuvraj Singh
+              吴汇森（Lucas Wu）
             </h2>
             <p className="text-muted-foreground text-sm">
-              AI Full-Stack Developer · Open to Work
+              Senior Frontend Engineer
             </p>
           </div>
         </div>
@@ -45,7 +43,7 @@ const InternshipCard = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
             </span>
-            Available
+            Open to Connect
           </span>
         </div>
       </div>
@@ -57,16 +55,16 @@ const InternshipCard = () => {
           <div>
             <p className="text-foreground text-sm font-medium">Role</p>
             <p className="text-muted-foreground text-sm">
-              AI Full-Stack Developer — open to full-time roles
+              高级前端开发工程师 · 5+ 年前端经验
             </p>
           </div>
         </div>
         <div className="flex items-start gap-3">
-          <MapPin className="mt-1 h-5 w-5 text-green-500" />
+          <GraduationCap className="mt-1 h-5 w-5 text-green-500" />
           <div>
-            <p className="text-foreground text-sm font-medium">Location</p>
+            <p className="text-foreground text-sm font-medium">Education</p>
             <p className="text-muted-foreground text-sm">
-              Gurugram, India · Remote-friendly
+              广东工业大学 · 控制工程
             </p>
           </div>
         </div>
@@ -78,15 +76,15 @@ const InternshipCard = () => {
             <p className="text-foreground text-sm font-medium">Tech Stack</p>
             <div className="text-muted-foreground grid grid-cols-1 gap-y-1 text-sm sm:grid-cols-2">
               <ul className="decoration-none list-disc pl-4">
-                <li>Python, TypeScript, JavaScript</li>
-                <li>FastAPI, Node.js, Express, Django</li>
-                <li>OpenAI, Mistral, Claude, Gemini</li>
-                <li>RAG, CrewAI, Multi-Agent Systems</li>
+                <li>Vue3, Vue2, React, Next.js</li>
+                <li>TypeScript, Vite, Webpack, pnpm</li>
+                <li>Element Plus, Ant Design Vue</li>
+                <li>ECharts, Canvas, WebRTC</li>
               </ul>
               <ul className="list-disc pl-4">
-                <li>React, Next.js, Vite, Tailwind CSS</li>
-                <li>PostgreSQL, Redis, Supabase</li>
-                <li>Docker, Railway, Vercel</li>
+                <li>Git, ESLint, Prettier</li>
+                <li>Docker, Jenkins, Nginx, Linux</li>
+                <li>Dify, LangChain, LLM API</li>
                 <li>
                   <a
                     href="/chat?query=What%20are%20your%20skills%3F%20Give%20me%20a%20list%20of%20your%20soft%20and%20hard%20skills."
@@ -107,9 +105,10 @@ const InternshipCard = () => {
           What I bring
         </p>
         <p className="text-foreground text-sm">
-          Real-world AI dev experience. <br />
-          Blending AI passion with hands-on development to bring tech ideas to life. <br />
-          I ship fast, and love building useful things that actually work.
+          5+ 年企业级前端开发经验，覆盖云平台、AI 应用、数据可视化、移动端 H5
+          与官网。
+          <br />
+          擅长复杂模块开发、组件抽象、响应式适配、性能优化与工程化交付。
         </p>
       </div>
 
@@ -117,9 +116,8 @@ const InternshipCard = () => {
       <div className="mt-8">
         <p className="text-foreground mb-2 text-lg font-semibold">Goal</p>
         <p className="text-foreground text-sm">
-          Join a bold, innovative team building AI-powered tools that matter. I
-          want to improve fast, contribute hard, and leave a mark. I’m fast,
-          flexible, and HUNGRYYYYY 🔥
+          持续探索 Next.js、Dify、LangChain、Codex 与 Claude Code，推动 AI
+          与前端工程实践结合。
         </p>
       </div>
 

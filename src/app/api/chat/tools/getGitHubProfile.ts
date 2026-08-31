@@ -66,7 +66,7 @@ async function fetchGitHub<T>(url: string): Promise<T> {
 
 export const getGitHubProfile = tool({
   description:
-    "Fetches Yuvraj Singh's current public GitHub profile, repository statistics, languages, and highlighted repositories. Use it whenever someone asks about my GitHub, repositories, open-source work, stars, or GitHub activity.",
+    "Fetches Lucas Wu's current public GitHub profile, repository statistics, languages, and highlighted repositories. Use it whenever someone asks about my GitHub, repositories, open-source work, stars, or GitHub activity.",
   parameters: z.object({}),
   execute: async () => {
     const encodedUsername = encodeURIComponent(GITHUB_USERNAME);

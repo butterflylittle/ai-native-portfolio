@@ -8,10 +8,10 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 ## 1. Product surface & information architecture
 
-| Route / area | Purpose |
-|--------------|---------|
-| `/` (home) | Hero: name, “AI Portfolio” title, memoji image, primary “Ask me anything” field, quick-question grid, GitHub star button, theme toggle, “Looking for a talent?” CTA, optional fluid cursor background |
-| `/chat` | Full-screen chat: animated memoji/video avatar header, AI responses (tools + markdown), suggested prompts, bottom composer, helper quick-questions + bottom sheet drawer |
+| Route / area | Purpose                                                                                                                                                                                               |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/` (home)   | Hero: name, “AI Portfolio” title, memoji image, primary “Ask me anything” field, quick-question grid, GitHub star button, theme toggle, “Looking for a talent?” CTA, optional fluid cursor background |
+| `/chat`      | Full-screen chat: animated memoji/video avatar header, AI responses (tools + markdown), suggested prompts, bottom composer, helper quick-questions + bottom sheet drawer                              |
 
 **Navigation pattern:** Home submits free text or preset questions via `router.push('/chat?query=…')`. Chat can link back to home by tapping the avatar (full navigation).
 
@@ -49,7 +49,7 @@ This document describes the **visual system, layout, and interaction patterns** 
 - **Radius:** Global `--radius: 0.625rem` (~10px). UI uses **full pills** for search bars (`rounded-full`), **2xl** for cards/modal shells (`rounded-2xl`), **lg/xl** for smaller controls.
 - **Glass / blur:** Frosted surfaces use `bg-white/30` or `bg-neutral-800` variants with **`backdrop-blur-lg`** (and `shadow-md` on some chips).
 - **Borders:** Neutral-200/700 dividers; outline buttons use `border-border`.
-- **Footer watermark (home):** Large background name “Yuvraj” with `bg-gradient-to-b from-neutral-500/10 to-transparent`, `bg-clip-text`, **hidden below `sm`**.
+- **Footer watermark (home):** Large background owner name with `bg-gradient-to-b from-neutral-500/10 to-transparent`, `bg-clip-text`, **hidden below `sm`**.
 
 ### 2.4 Custom scrollbar
 
@@ -63,7 +63,7 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 1. **Absolute top-right:** `ThemeToggle` + `GithubButton` (`sm`, animated star count, repo link).
 2. **Absolute top-left:** Pill button “Looking for a talent?” — `rounded-full`, `border`, `bg-white/30`, `backdrop-blur-lg`, green pulse dot, hover lightens background; dark mode inverts text/border.
-3. **Header block (motion):** `WelcomeModal` trigger (logo in frosted ghost button) → “Hey, I'm Yuvraj Singh 👋” → “AI Portfolio” title. Entry animation: opacity + vertical slide (`y: -60` / `80`, duration `0.8s`, ease).
+3. **Header block (motion):** `WelcomeModal` trigger (logo in frosted ghost button) → personalized owner greeting → “AI Portfolio” title. Entry animation: opacity + vertical slide (`y: -60` / `80`, duration `0.8s`, ease).
 4. **Hero image:** Container `h-52 w-48` → `sm:h-72 sm:w-72`, memoji PNG scaled (`scale-[1.2]`, slight `translate-y-1`).
 5. **Primary input:** Max width `max-w-lg`, **pill** row: left padding `pl-6`, `border-neutral-200`, `bg-white/30`, `backdrop-blur`; input transparent; **right** circular submit `bg-[#0171E3]`, `ArrowRight` icon, disabled when empty.
 6. **Quick grid:** `max-w-2xl`, `grid-cols-1` → `sm:grid-cols-3` → `md:grid-cols-5`, gap `3`. Each cell: `Button` `outline`, **square aspect**, `rounded-2xl`, frosted background, **no** default shadow, `active:scale-95`, icon + label.
@@ -93,11 +93,11 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 ### 4.3 States
 
-| State | UI |
-|-------|-----|
-| Empty (no messages) | Centered **`ChatLanding`**: title “I'm Yuvraj's digital twin”, subtitle, list of **suggested questions** as full-width rows |
-| Loading user submit | Assistant **`ChatBubble` `received`** with **`MessageLoading`** (three bouncing dots SVG) |
-| Assistant reply | **`SimplifiedChatView`**: optional **tool** UI on top, then received bubble with markdown content; `custom-scrollbar` on inner scroll |
+| State               | UI                                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Empty (no messages) | Centered **`ChatLanding`**: personalized digital-twin title, subtitle, list of **suggested questions** as full-width rows             |
+| Loading user submit | Assistant **`ChatBubble` `received`** with **`MessageLoading`** (three bouncing dots SVG)                                             |
+| Assistant reply     | **`SimplifiedChatView`**: optional **tool** UI on top, then received bubble with markdown content; `custom-scrollbar` on inner scroll |
 
 ### 4.4 ChatLanding
 
@@ -126,7 +126,7 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 ### 4.8 Ancillary
 
-- Fixed **LinkedIn** link bottom-right (hidden on small screens, `md:block`), subtle hover underline.
+- Fixed social-profile link bottom-right (hidden on small screens, `md:block`), subtle hover underline.
 
 ---
 
@@ -141,10 +141,10 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 ## 6. Motion & interaction summary
 
-| Library | Usage |
-|---------|--------|
+| Library           | Usage                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **framer-motion** | Page sections, chat transitions, `AnimatePresence` for landing/loading/answer, HelperBoost buttons, drawer micro-interactions |
-| **motion/react** | `GithubButton` star fill animation, in-view triggers |
+| **motion/react**  | `GithubButton` star fill animation, in-view triggers                                                                          |
 
 **Common motion preset (chat):** `opacity 0→1`, `y: 20→0`, `0.3s`, `easeOut`.
 
@@ -154,12 +154,12 @@ This document describes the **visual system, layout, and interaction patterns** 
 
 ## 7. Assets & media
 
-| Asset | Role |
-|-------|------|
-| `/landing-memojis.png` | Hero + iOS avatar fallback |
-| `/final_memojis.webm`, `/final_memojis_ios.mp4` | Desktop/video memoji loop in chat |
-| `/logo-yuvi.svg` | Brand mark, favicon, welcome trigger |
-| Fluid canvas | `#fluid` canvas (full viewport, `z-0`) |
+| Asset                                           | Role                                   |
+| ----------------------------------------------- | -------------------------------------- |
+| `/landing-memojis.png`                          | Hero + iOS avatar fallback             |
+| `/final_memojis.webm`, `/final_memojis_ios.mp4` | Desktop/video memoji loop in chat      |
+| Brand logo asset                                | Brand mark, favicon, welcome trigger   |
+| Fluid canvas                                    | `#fluid` canvas (full viewport, `z-0`) |
 
 Home **preloads** memoji PNG and prefetches video assets for faster chat.
 
@@ -201,20 +201,20 @@ Use this as a punch list when rebuilding the same **look and behavior**:
 
 ## 11. File reference (primary UI sources)
 
-| Area | Files |
-|------|--------|
-| Home | `src/app/page.tsx` |
-| Global styles / tokens | `src/app/globals.css`, `src/app/layout.tsx` |
-| Chat shell | `src/components/chat/chat.tsx` |
-| Composer | `src/components/chat/chat-bottombar.tsx` |
-| Empty state | `src/components/chat/chat-landing.tsx` |
-| Quick questions / drawer | `src/components/chat/HelperBoost.tsx` |
-| Bubbles | `src/components/ui/chat/chat-bubble.tsx` |
-| Welcome | `src/components/welcome-modal.tsx` |
-| Cursor | `src/components/FluidCursor.tsx`, `src/hooks/use-FluidCursor.tsx` |
-| GitHub CTA | `src/components/ui/github-button.tsx` |
-| Theme toggle | `src/components/ui/ThemeToggle.tsx` |
+| Area                     | Files                                                             |
+| ------------------------ | ----------------------------------------------------------------- |
+| Home                     | `src/app/page.tsx`                                                |
+| Global styles / tokens   | `src/app/globals.css`, `src/app/layout.tsx`                       |
+| Chat shell               | `src/components/chat/chat.tsx`                                    |
+| Composer                 | `src/components/chat/chat-bottombar.tsx`                          |
+| Empty state              | `src/components/chat/chat-landing.tsx`                            |
+| Quick questions / drawer | `src/components/chat/HelperBoost.tsx`                             |
+| Bubbles                  | `src/components/ui/chat/chat-bubble.tsx`                          |
+| Welcome                  | `src/components/welcome-modal.tsx`                                |
+| Cursor                   | `src/components/FluidCursor.tsx`, `src/hooks/use-FluidCursor.tsx` |
+| GitHub CTA               | `src/components/ui/github-button.tsx`                             |
+| Theme toggle             | `src/components/ui/ThemeToggle.tsx`                               |
 
 ---
 
-*Generated from the `portfolio-main` codebase for reuse as a UI specification.*
+_Generated from the `portfolio-main` codebase for reuse as a UI specification._

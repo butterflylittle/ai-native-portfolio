@@ -46,34 +46,7 @@ interface AvatarProps {
 // Dynamic import of Avatar component
 const Avatar = dynamic<AvatarProps>(
   () =>
-    Promise.resolve(({ hasActiveTool, videoRef, isTalking }: AvatarProps) => {
-      // This function will only execute on the client
-      const isIOS = () => {
-        // Multiple detection methods
-        const userAgent = window.navigator.userAgent;
-        const platform = window.navigator.platform;
-        const maxTouchPoints = window.navigator.maxTouchPoints || 0;
-
-        // UserAgent-based check
-        const isIOSByUA =
-          //@ts-ignore
-          /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-
-        // Platform-based check
-        const isIOSByPlatform = /iPad|iPhone|iPod/.test(platform);
-
-        // iPad Pro check
-        const isIPadOS =
-          //@ts-ignore
-          platform === 'MacIntel' && maxTouchPoints > 1 && !window.MSStream;
-
-        // Safari check
-        const isSafari = /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
-
-        return isIOSByUA || isIOSByPlatform || isIPadOS || isSafari;
-      };
-
-      // Conditional rendering based on detection
+    Promise.resolve(({ hasActiveTool }: AvatarProps) => {
       return (
         <div
           className={`flex items-center justify-center rounded-full transition-all duration-300 ${hasActiveTool ? 'h-20 w-20' : 'h-28 w-28'}`}
@@ -82,24 +55,11 @@ const Avatar = dynamic<AvatarProps>(
             className="relative cursor-pointer"
             onClick={() => (window.location.href = '/')}
           >
-            {isIOS() ? (
-              <img
-                src="/landing-memojis.png"
-                alt="iOS avatar"
-                className="h-full w-full scale-[1.8] object-contain"
-              />
-            ) : (
-              <video
-                ref={videoRef}
-                className="h-full w-full scale-[1.8] object-contain"
-                muted
-                playsInline
-                loop
-              >
-                <source src="/final_memojis.webm" type="video/webm" />
-                <source src="/final_memojis_ios.mp4" type="video/mp4" />
-              </video>
-            )}
+            <img
+              src="https://avatars.githubusercontent.com/u/65402909?v=4"
+              alt="Lucas Wu"
+              className="h-full w-full rounded-full object-cover"
+            />
           </div>
         </div>
       );
@@ -388,12 +348,12 @@ const Chat = () => {
         </div>
 
         <a
-          href="https://linkedin.com/in/yuvraj-singh-77601827a"
+          href="https://github.com/butterflylittle"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed right-3 bottom-0 z-10 mb-4 hidden cursor-pointer items-center gap-2 rounded-xl px-4 py-2 text-sm hover:underline md:block"
         >
-          @yuvraj-singh
+          @butterflylittle
         </a>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
   <br />
   <p>
-    <a href="https://www.yuvraj.bio"><img src="assets/readme-photo.png" alt="AI Portfolio Banner" width="100%"/></a>
+    <a href="https://github.com/butterflylittle"><img src="https://avatars.githubusercontent.com/u/65402909?v=4" alt="千树同学 GitHub avatar" width="120"/></a>
   </p>
   <br />
 
@@ -28,7 +28,7 @@
 
 ### **About The Project** 💡
 
-Static portfolios are a thing of the past. They present a one-sided, lifeless view of a developer's journey. I decided to build **[yuvraj.bio](https://www.yuvraj.bio)** to break that mold.
+Static portfolios are a thing of the past. They present a one-sided, lifeless view of a developer's journey. This project explores a more conversational approach: an AI-native portfolio that visitors can interact with directly.
 
 This project is an **AI-powered, interactive portfolio** that transforms the "About Me" page into a dynamic, engaging conversation. Instead of forcing recruiters, developers, and friends to scroll endlessly through information, it invites them to ask questions and receive answers tailored specifically to them.
 
@@ -75,7 +75,7 @@ Want to get this project running on your local machine? Follow these simple step
 
     ```sh
     git clone https://github.com/butterflylittle/ai-native-portfolio.git
-    cd Yuvi_portfolio
+    cd ai-native-portfolio
     ```
 
 2.  **Install dependencies:**
@@ -138,13 +138,11 @@ This project is open-sourced under the **MIT License**. See the [LICENSE](LICENS
 
 ### **Contact & Links** 🔗
 
-**Yuvraj Singh** - Let's connect!
+**千树同学 (@butterflylittle)** — Let's connect!
 
 <div align="center">
 
-[![Portfolio](https://img.shields.io/badge/Live_Demo-yuvraj.bio-2ea44f?style=for-the-badge&logo=vercel)](https://www.yuvraj.bio)
-&nbsp;
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yuvraj-singh-77601827a/)
+[![GitHub](https://img.shields.io/badge/GitHub-butterflylittle-181717?style=for-the-badge&logo=github)](https://github.com/butterflylittle)
 
 </div>
 

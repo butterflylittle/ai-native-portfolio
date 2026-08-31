@@ -1,735 +1,389 @@
-// File: data.tsx
-
-import Image from 'next/image';
-import { ChevronRight, Link } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { ChevronRight, Link } from 'lucide-react';
+import Image from 'next/image';
 
-// --- PROJECT DATABASE ---
-// This array holds the detailed information for each project.
-const PROJECT_CONTENT = [
+interface ProjectLink {
+  name: string;
+  url: string;
+}
+
+interface ProjectImage {
+  src: string;
+  alt: string;
+}
+
+interface Project {
+  title: string;
+  shortTitle?: string;
+  category: string;
+  tagline: string;
+  description: string;
+  techStack: string[];
+  date: string;
+  links: ProjectLink[];
+  images: ProjectImage[];
+  cover: string;
+}
+
+function createProjectCover(
+  label: string,
+  subtitle: string,
+  startColor: string,
+  endColor: string
+) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="${startColor}"/>
+          <stop offset="1" stop-color="${endColor}"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="75%" cy="18%" r="70%">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="900" height="1200" fill="url(#g)"/>
+      <rect width="900" height="1200" fill="url(#glow)"/>
+      <circle cx="740" cy="190" r="210" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2"/>
+      <circle cx="740" cy="190" r="145" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2"/>
+      <path d="M-80 880 C180 690 320 1060 620 820 C760 710 850 750 980 620" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="3"/>
+      <text x="72" y="930" fill="#ffffff" font-family="ui-monospace, monospace" font-size="28" letter-spacing="5">${subtitle}</text>
+      <text x="68" y="1010" fill="#ffffff" font-family="ui-sans-serif, sans-serif" font-size="68" font-weight="700">${label}</text>
+    </svg>`;
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+const PROJECT_CONTENT: Project[] = [
   {
-    title: 'SynQ',
-    tagline: 'Find prospects. Start conversations. Close more deals.',
-    description:
-      'SynQ is an AI-native B2B SaaS platform that transforms LinkedIn into a collaborative revenue engine for founders, agencies, and sales teams. It centralizes multi-account inbox management, automates outreach workflows, and leverages AI for lead classification and reply generation—all within a secure, shared workspace.',
-    techStack: [
-      'React',
-      'TypeScript',
-      'Vite',
-      'Node.js',
-      'Express',
-      'Drizzle ORM',
-      'PostgreSQL',
-      'Supabase',
-      'Gemini',
-      'Unipile',
-      'Paddle',
-    ],
-    date: 'May 2026',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://usesynq.co',
-      },
-    ],
-    images: [
-      { src: '/projects/synq-landing.png', alt: 'Landing Page' },
-      { src: '/projects/synq-dashboard.png', alt: 'Dashboard' },
-      { src: '/projects/synq-inbox.png', alt: 'LinkedIn Inbox' },
-      { src: '/projects/synq-team.png', alt: 'Team Collaboration' },
-      { src: '/projects/synq-ai.jpg', alt: 'AI Reply Feature' },
-      { src: '/projects/synq-billing.jpg', alt: 'Billing & Checkout' },
-      { src: '/projects/synq-subscription.jpg', alt: 'Subscription Management' },
-      { src: '/projects/synq-analytics.png', alt: 'Analytics & Insights' },
-    ],
-  },
-  {
-    title: 'CWT',
-    tagline: 'AI-powered market insights from traders, creators, and communities.',
-    description:
-      'Built a production-grade AI RAG platform that continuously ingests market intelligence from YouTube, X (Twitter), Discord, and other financial communities. It transforms millions of unstructured conversations into searchable knowledge for traders.',
-    techStack: [
-      'Python',
-      'FastAPI',
-      'CrewAI',
-      'OpenAI API',
-      'ChromaDB',
-      'Selenium',
-      'RAG',
-      'Semantic Search',
-    ],
-    date: 'Sep 2025 – Feb 2026',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://www.crowdwisdomtrading.com/',
-      },
-    ],
-    images: [
-      { src: '/projects/cwt-landing.png', alt: 'Landing page of Crowd Wisdom Trading' },
-      { src: '/projects/cwt-dashboard.png', alt: 'Dashboard' },
-      { src: '/projects/cwt-vs-others.png', alt: 'CrowdWisdom vs ChatGPT or Claude' },
-      { src: '/projects/cwt-killer-question.png', alt: 'One killer question for the agent' },
-    ],
-  },
-  {
-    title: 'Poise',
-    tagline: 'See every subscription. Control every renewal.',
-    description:
-      'Poise is an AI-native SaaS platform that automatically discovers, organizes, and manages software subscriptions by securely scanning email inboxes. It eliminates manual expense tracking, transforming unstructured email data into a centralized financial dashboard.',
-    techStack: [
-      'React',
-      'TypeScript',
-      'Vite',
-      'Node.js',
-      'Express',
-      'Supabase',
-      'OpenAI API',
-      'BullMQ',
-      'Redis',
-      'Google Cloud Pub/Sub',
-      'Railway',
-    ],
-    date: '2026',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://usepoise.com',
-      },
-    ],
-    images: [
-      { src: '/projects/poise-landing.png', alt: 'The Landing Page' },
-      { src: '/projects/poise-dashboard.png', alt: 'The main Dashboard showing spend trends and metrics' },
-      { src: '/projects/poise-subscriptions.png', alt: 'The Subscriptions list view' },
-      { src: '/projects/poise-category.png', alt: 'Category view page' },
-      { src: '/projects/poise-payables.png', alt: 'Payables page' },
-      { src: '/projects/poise-recurring.png', alt: 'Recurring charges page' },
-      { src: '/projects/poise-popup.png', alt: 'Subscription pop up view' },
-      { src: '/projects/poise-detail.png', alt: 'Subscription detail page' },
-      { src: '/projects/poise-history.png', alt: 'Subscription detail page with transaction history and invoice download feature' },
-    ],
-  },
-  {
-    title: 'Baghiravan',
-    tagline: 'Nature-inspired silhouettes crafted for timeless resort wear.',
-    description:
-      'Baghiravan is a premium digital editorial showroom developed for luxury fashion designer Mahek Porwal. Built with Next.js and Framer Motion, it serves as an immersive digital storefront designed to feel like a high-end fashion campaign rather than a traditional e-commerce catalogue.',
-    techStack: [
-      'Next.js',
-      'React',
-      'Tailwind CSS',
-      'Framer Motion',
-      'Lenis Scroll',
-      'Vercel',
-    ],
-    date: '2026',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://baghiravan.vercel.app',
-      },
-    ],
-    images: [
-      { src: '/projects/baghiravan-hero.png', alt: 'Hero or landing page' },
-      { src: '/projects/baghiravan-scroll.png', alt: 'Fluid scrolling or parallax effects page' },
-      { src: '/projects/baghiravan-collection.png', alt: 'Collection view page' },
-      { src: '/projects/baghiravan-product.png', alt: 'Product detail page' },
-    ],
-  },
-  {
-    title: 'TravelBooker',
-    tagline: 'Search, compare, and book — flights, trains, and buses in one place.',
-    description:
-      'TravelBooker is a comprehensive full-stack web platform built with Django. It enables users to search, compare, and book flights, trains, and buses through a unified interface, featuring a complete booking workflow from authentication to reservation management.',
-    techStack: [
-      'Python',
-      'Django',
-      'SQLite',
-      'MySQL',
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'Bootstrap 5',
-    ],
-    date: '2024',
-    links: [
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/TravelBooker-Full-Stack-Travel-Booking-Platform',
-      },
-    ],
-    images: [
-      { src: '/projects/travelbooker-landing.png', alt: 'Landing page or search page' },
-      { src: '/projects/travelbooker-result.png', alt: 'Result page' },
-    ],
-  },
-  {
-    title: 'Resume Optimizer AI',
-    tagline: 'Optimize every application. Maximize every opportunity.',
-    description:
-      'Resume Optimizer AI is a streamlined AI application built with Streamlit and the Mistral LLM API. It automates the tedious process of tailoring resumes by analyzing uploaded PDFs against target job descriptions, generating skill gap insights, creating interview prep questions, and exporting dynamically optimized, format-preserved resumes.',
-    techStack: [
-      'Python',
-      'Streamlit',
-      'Mistral LLM',
-      'PyMuPDF',
-      'ReportLab',
-    ],
-    date: '2025',
-    links: [
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/ai-resume-optimizer',
-      },
-    ],
-    images: [
-      { src: '/projects/resume-optimizer-agent.png', alt: 'Resume optimizer agent' },
-    ],
-  },
-  {
-    title: 'Mahek Porwal',
-    tagline: 'A digital showcase for contemporary couture and craftsmanship.',
-    description:
-      'The Mahek Porwal Portfolio is a responsive, personal branding website developed for a fashion designer to establish her professional online presence. Built with vanilla HTML, CSS, and JavaScript, it serves as an elegant, fast-loading digital showcase for her creative journey, design philosophy, and fashion collections.',
-    techStack: [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'Vercel',
-    ],
-    date: '2025',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://mahek-porwal-portfolio.vercel.app',
-      },
-    ],
-    images: [
-      { src: '/projects/mahek-hero.png', alt: 'Main hero section' },
-      { src: '/projects/mahek-parallel.png', alt: 'Projects parallel effect' },
-      { src: '/projects/mahek-detail.png', alt: 'Project detail page' },
-    ],
-  },
-  {
-    // --- NEW AI-NATIVE PORTFOLIO PROJECT ---
     title: 'AI Native Portfolio',
-    tagline: 'Meet my AI before you meet me.',
+    category: 'Shipped · AI Product',
+    tagline:
+      'A portfolio that can answer questions instead of only displaying pages.',
     description:
-      'Static portfolios are boring. Mine talks back. The world’s first AI-native portfolio where an AI avatar answers your questions about me in real time.',
+      'An interactive AI portfolio built with Next.js and DeepSeek. It combines streaming chat, structured tool calls, live GitHub profile data, project cards, resume download, and a personalized system prompt grounded in verified experience.',
     techStack: [
       'Next.js',
       'React',
       'TypeScript',
+      'DeepSeek API',
+      'Vercel AI SDK',
+      'Tool Calling',
       'Tailwind CSS',
       'Framer Motion',
-      'Mistral AI API',
-      'OpenAI API',
-      'Node.js',
+      'GitHub API',
       'Vercel',
     ],
-    date: 'August 2025', // <-- TODO: Update with your project date
+    date: '2026 · Active',
     links: [
       {
-        name: 'Live Demo - You Are Here!',
-        url: 'https://www.yuvraj.bio',
-      },
-      {
         name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/ai-native-portfolio',
+        url: 'https://github.com/butterflylittle/ai-native-portfolio',
       },
     ],
     images: [
-      { src: '/projects/ai-portfolio-chat.png', alt: 'The AI Native Portfolio chat interface in action' },
-      { src: '/projects/ai-portfolio-home.png', alt: 'Homepage of the AI Native Portfolio' },
+      {
+        src: '/projects/ai-portfolio-home.png',
+        alt: 'AI Native Portfolio homepage',
+      },
+      {
+        src: '/projects/ai-portfolio-chat.png',
+        alt: 'AI Native Portfolio chat experience',
+      },
     ],
+    cover: createProjectCover(
+      'AI Portfolio',
+      'NEXT.JS · DEEPSEEK',
+      '#0f172a',
+      '#0f766e'
+    ),
   },
   {
-    title: 'AgroAI',
-    tagline: 'Snap a leaf. Get a diagnosis. Save the crop.',
+    title: 'AskBook RAG Knowledge Base',
+    shortTitle: 'AskBook RAG',
+    category: 'Built · Agentic RAG',
+    tagline:
+      'Upload documents, retrieve evidence, and answer with page-level citations.',
     description:
-      'Snap a leaf, get a diagnosis! This AI-powered web app detects 38 plant diseases with 96% accuracy and gives instant tips on symptoms, causes, and treatment—making plant care smarter and easier for farmers and gardeners.',
+      'A modular document question-answering application. The ingestion pipeline parses PDFs, performs CJK-aware chunking, generates 1024-dimensional GLM embeddings, stores vectors in PostgreSQL/pgvector, and uses HNSW cosine retrieval to build grounded context for streaming answers with citations.',
     techStack: [
-      'Python',
-      'Flask',
-      'TensorFlow',
-      'Keras',
-      'Deep Learning',
-      'Computer Vision',
-      'EfficientNetB4',
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-    ],
-    date: 'May 2024',
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://github.com/yuvraj0412s/AgroAI', // <-- TODO: Replace with your live deployment URL.... will do later
-      },
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/AgroAI', // <-- TODO: Replace with your actual repo URL if different
-      },
-    ],
-    // All seven of screenshots are showcased here
-    images: [
-      {
-        src: '/projects/agroai-home.png',
-        alt: 'AgroAI Homepage - AI-Powered Plant Health Companion',
-      },
-      {
-        src: '/projects/agroai-result.png',
-        alt: 'AgroAI Analysis Result Page with Prediction and Confidence Score',
-      },
-      {
-        src: '/projects/agroai-guide.png',
-        alt: 'AgroAI Crop-wise Disease Guides Page',
-      },
-      {
-        src: '/projects/agroai-guide-detail.png',
-        alt: 'AgroAI Tomato Disease Guide Detail Page with Accordion',
-      },
-      {
-        src: '/projects/agroai-how-it-works.png',
-        alt: 'AgroAI How It Works Page with a 3-step flowchart',
-      },
-      {
-        src: '/projects/agroai-resources.png',
-        alt: 'AgroAI Farming & Plant Care Resources Page',
-      },
-      {
-        src: '/projects/agroai-about.png',
-        alt: 'AgroAI About and Contact Page',
-      },
-    ],
-  },
-  {
-    // --- NEW DJANGO E-COMMERCE PROJECT ---
-    title: 'Holohype',
-    tagline: 'Smart shopping with AI recommendations baked in.',
-    description:
-      'HoloHype is a quirky full-stack e-commerce hub with a clever AI that knows what you want, a lightning-fast cart, secure logins, and a super-handy admin panel to keep all the goodies in check.',
-    techStack: [
-      'Django',
-      'Python',
-      'Cython',
-      'Content-Based Filtering',
-      'NumPy',
-      'Pandas',
-      'JavaScript',
-      'AJAX',
-      'HTML5',
-      'CSS3',
-    ],
-    date: 'June 2025', // <-- TODO: Update with your project date
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://github.com/yuvraj0412s/holohype', // <-- TODO: Replace with your live deployment URL
-      },
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/holohype', // <-- TODO: Update with your actual repo URL
-      },
-    ],
-    images: [
-      { src: '/projects/holohype-home.png', alt: 'E-commerce platform homepage with product listings' },
-      { src: '/projects/holohype-login.png', alt: 'Modern user login and authentication page' },
-      { src: '/projects/holohype-product.png', alt: 'Product detail page with AI-powered recommendations' },
-      { src: '/projects/holohype-cart.png', alt: 'Dynamic shopping cart with real-time updates' },
-    ],
-  },
-  {
-    // --- NEW REACT PORTFOLIO PROJECT ---
-    title: 'Old Portfolio',
-    tagline: 'Dark mode, shooting stars, and a cosmic developer showcase.',
-    description:
-      'A stellar dev portfolio with shooting stars on a dark space background! Built with React, Vite & Tailwind, it features sleek animations, dark/light mode, a filterable skills grid, dynamic project showcase, and a working contact form. A cosmic way to show off my frontend skills!',
-    techStack: [
-      'React',
-      'Vite',
-      'Tailwind CSS',
-      'Radix UI',
-      'Lucide Icons',
+      'Next.js',
       'TypeScript',
-      'Responsive Design',
+      'PostgreSQL',
+      'pgvector',
+      'Drizzle ORM',
+      'GLM Embedding',
+      'DeepSeek',
+      'HNSW',
+      'Vercel AI SDK',
+      'RAG',
     ],
-    date: '2024', // <-- TODO: Update with your project date
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://yuvraj-portfolio-phi.vercel.app', // <-- TODO: Update if this is the correct link
-      },
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/react-tailwind-portfolio', // <-- TODO: Update with your actual repo URL
-      },
-    ],
-    images: [
-      { src: '/projects/old-portfolio-home.png', alt: 'Homepage of the React portfolio with hero section' },
-      { src: '/projects/old-portfolio-about.png', alt: 'About Me section with description' },
-      { src: '/projects/old-portfolio-skills.png', alt: 'Filterable skills grid with progress bars' },
-      { src: '/projects/old-portfolio-projects.png', alt: 'Project showcase section with cards' },
-      { src: '/projects/old-portfolio-contact.png', alt: 'Contact page with form to reach out directly' },
-    ],
-  },
-  {
-    // --- YOUTUBE CLONE PROJECT (FROM YOUR README) ---
-    title: 'YouTube Clone',
-    tagline: 'Pixel-perfect. Fully responsive. Built from scratch.',
-    description:
-      'A pixel-perfect, responsive clone of the YouTube user interface, built from scratch using modern HTML5 and CSS3. The project showcases a deep understanding of frontend fundamentals, featuring a dynamic video grid built with CSS Grid, a fully responsive sidebar and header created with Flexbox, and a mobile-first design approach that ensures a seamless experience on any device.',
-    techStack: [
-      'HTML5',
-      'CSS3',
-      'Flexbox',
-      'CSS Grid',
-      'Responsive Design',
-      'Mobile-First',
-    ],
-    date: '2023', // <-- TODO: Update with your project date
-    links: [
-      {
-        name: 'Live Demo',
-        url: 'https://github.com/yuvraj0412s/YouTube_clone', // <-- TODO: Replace with your live deployment URL
-      },
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/YouTube_clone', // <-- TODO: Update if your repo name is different
-      },
-    ],
-    images: [
-      { src: '/projects/yt-clone-home.png', alt: 'Screenshot of the YouTube Clone project homepage' },
-      // Add more screenshots here if you have them!
-    ],
-  },
-  {
-    title: 'Latency-Aware Task Partitioning',
-    tagline: 'Optimizing edge–fog–cloud offloading with metaheuristic intelligence.',
-    description:
-      'Proposed a framework for optimal task partitioning and user association across edge–fog–cloud layers, implementing metaheuristic algorithms (ACO, GA, PSO) to solve MILP-based formulations for both dependent and independent subtasks.',
-    techStack: [
-      'Python',
-      'Metaheuristic Algorithms (ACO, GA, PSO)',
-      'MILP',
-      'Edge Computing',
-    ],
-    date: 'Ongoing',
+    date: '2026 · Prototype',
     links: [],
-    images: [
-      {
-        src: '/projects/RP_preview.png', // Placeholder image
-        alt: 'Latency-Aware Task Partitioning project image 1',
-      },
-    ],
+    images: [],
+    cover: createProjectCover(
+      'AskBook RAG',
+      'PGVECTOR · HNSW',
+      '#172554',
+      '#4f46e5'
+    ),
   },
   {
-    title: 'Zomato Global Restaurant Analysis',
-    tagline: 'Uncovering hidden dining trends and expansion opportunities worldwide.',
+    title: 'Frontend Performance Investigator Agent',
+    shortTitle: 'Performance Agent',
+    category: 'Research · Agent Engineering',
+    tagline:
+      'Detect frontend regressions, collect evidence, and explain likely code causes.',
     description:
-      'An end-to-end data analytics project using Microsoft Excel to analyze global restaurant data. The project involved data cleaning, custom array formulas, LookUp functions, and conditional formatting. The final dashboard provides actionable business insights into market competition, price distributions, cuisine impact on ratings, and strategic recommendations for expanding into new countries.',
+      'A planned observability Agent for scheduled frontend performance investigations. The design separates deterministic baseline detection from agentic diagnosis, then correlates RUM metrics, LCP breakdowns, resource timing, CDN cache data, deployments, Git changes, logs, and previous incidents into an auditable root-cause report.',
     techStack: [
-      'Microsoft Excel',
-      'Data Cleaning',
-      'Data Visualization',
-      'Array Formulas',
-      'Pivot Tables',
-      'Business Intelligence',
+      'Agent Runtime',
+      'State Machine',
+      'Cron',
+      'RUM',
+      'Core Web Vitals',
+      'Git Tooling',
+      'Structured Output',
+      'Observability',
+      'Human Approval',
     ],
-    date: 'Ongoing (Newton School)',
-    links: [
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/Zomato-global-restaurant-expansion-analysis.git',
-      },
-    ],
-    images: [
-      { src: '/projects/Zomato_Interactive Zomato Dashboard.png', alt: 'Interactive Zomato Dashboard' },
-      { src: '/projects/Zomato_City-Level Expansion & Expenditure Analysis.png', alt: 'City-Level Expansion' },
-      { src: '/projects/Zomato_Strategic Recommendations & Action Plan.png', alt: 'Strategic Recommendations' },
-    ],
+    date: 'Research · In Progress',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Perf Agent',
+      'OBSERVE · DIAGNOSE',
+      '#3f0d12',
+      '#a71d31'
+    ),
   },
   {
-    title: 'IPL / RCB Performance Analytics',
-    tagline: 'Deep diving into a decade of cricket data to decode team strategies.',
+    title: 'Flyme Cloud Platform',
+    category: 'Professional · Enterprise PaaS',
+    tagline:
+      'Standardized cloud-resource management across multiple enterprise services.',
     description:
-      'A comprehensive SQL-based analytics project evaluating historical IPL data, with a specific focus on the Royal Challengers Bangalore (RCB) franchise. Utilized advanced SQL concepts including complex JOINs, window functions, and aggregations to analyze player versatility, toss decision impacts, home-ground advantage, and team win percentages. The analysis culminates in data-driven strategies for player acquisition and auction planning.',
+      'Participated in a large PaaS platform covering ECS, Redis, RocketMQ, containers, object storage, load balancing, monitoring, alarms, portal management, and multi-dimensional permissions. Built reusable tables, searches, dynamic forms, authentication, charting, SDKs, and shared interaction patterns.',
     techStack: [
-      'SQL',
-      'Advanced Aggregations',
-      'Window Functions',
-      'Data Analysis',
-      'Relational Databases',
-      'Business Strategy',
+      'Vue3',
+      'TypeScript',
+      'TSX',
+      'Ant Design Vue',
+      'Fetch',
+      'pnpm',
+      'ECharts',
+      'RBAC',
+      'SSO',
+      'PaaS',
     ],
-    date: 'Ongoing (Newton School)',
-    links: [
-      {
-        name: 'GitHub Repository',
-        url: 'https://github.com/yuvraj0412s/RCB-sql-sports-analytics.git',
-      },
+    date: '2022.04 - 2026.04',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Flyme Cloud',
+      'PAAS · RBAC · SSO',
+      '#082f49',
+      '#0284c7'
+    ),
+  },
+  {
+    title: 'Flyme Auto Website',
+    category: 'Professional · Product Website',
+    tagline:
+      'Responsive product storytelling with carefully controlled motion and loading.',
+    description:
+      'Delivered product, feature, and brand modules with unified desktop/mobile adaptation. Implemented GSAP scroll-triggered and page-transition motion, Blob-based image sequences, lazy loading, on-demand assets, and Vite build optimizations while reducing visual jitter and browser compatibility issues.',
+    techStack: [
+      'Vue3',
+      'TypeScript',
+      'Vite',
+      'GSAP',
+      'Responsive Design',
+      'Lazy Loading',
+      'Performance Optimization',
+      'Safari Compatibility',
     ],
-    images: [
-      { src: '/projects/IPL_RCB_Business Problem & Objectives (hero image).png', alt: 'Business Problem & Objectives' },
-      { src: '/projects/IPL_RCB_Home vs Away Venue Dashboard.png', alt: 'Home vs Away Venue Dashboard' },
-      { src: '/projects/IPL_RCB_Top Players by Strike Rate Dashboard.png', alt: 'Top Players Dashboard' },
-      { src: '/projects/IPL_RCB_Venue-Specific Player Performance Heatmap.png', alt: 'Venue Heatmap' },
+    date: 'Professional Project',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Flyme Auto',
+      'VUE3 · GSAP',
+      '#111827',
+      '#7c3aed'
+    ),
+  },
+  {
+    title: 'Dify In-Car Voice Assistant',
+    shortTitle: 'Dify AI Assistant',
+    category: 'Professional · AI Application',
+    tagline:
+      'Private AI workflows for in-car voice interactions and tool execution.',
+    description:
+      'Built and integrated a privately deployed Dify platform for an in-car voice assistant. The work covered LLM API integration, Agent and workflow orchestration, prompt templates, standardized tool parameters, multi-turn dialogue, function execution, and failure fallbacks.',
+    techStack: [
+      'Docker',
+      'Dify',
+      'LLM API',
+      'LangChain',
+      'Next.js',
+      'shadcn/ui',
+      'Express',
+      'AI Agent',
+      'Workflow Orchestration',
     ],
+    date: 'Professional Project',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Dify Agent',
+      'VOICE · TOOLS · WORKFLOW',
+      '#064e3b',
+      '#059669'
+    ),
+  },
+  {
+    title: 'AI Customer Service & OTA Platforms',
+    shortTitle: 'Operations Platforms',
+    category: 'Professional · Enterprise Console',
+    tagline:
+      'Reusable operational workflows for support, OTA, and content teams.',
+    description:
+      'Refactored feedback, AI conversation, and report-handling workflows; built reusable CRUD tables, exports, batch operations, and state transitions; developed OTA device-management modules and content-operation capabilities for feeds, comments, AI wallpapers, prompts, night mode, typography, and image preview.',
+    techStack: [
+      'Vue3',
+      'TypeScript',
+      'Element Plus',
+      'Ant Design Vue',
+      'ECharts',
+      'CRUD Architecture',
+      'Mobile H5',
+      'Data Export',
+    ],
+    date: 'Professional Projects',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Ops Platforms',
+      'AI SERVICE · OTA · CMS',
+      '#431407',
+      '#ea580c'
+    ),
+  },
+  {
+    title: 'Remote Support & Developer Tooling',
+    shortTitle: 'Remote Tooling',
+    category: 'Professional · Realtime & DX',
+    tagline: 'Realtime support, browser debugging, and productivity tooling.',
+    description:
+      'Designed WebRTC audio/video and remote-assistance capabilities for encrypted H5-to-App communication, screen sharing, recording, remote keys, and drawing annotations. Also developed Chrome debugging and automation utilities combining proxy inspection, API documentation, TypeScript declaration generation, and automated login.',
+    techStack: [
+      'Vue3',
+      'TypeScript',
+      'WebRTC',
+      'WebSocket',
+      'Canvas',
+      'Chrome Extension',
+      'whistle',
+      'Swagger',
+      'Postman',
+    ],
+    date: 'Professional Projects',
+    links: [],
+    images: [],
+    cover: createProjectCover(
+      'Remote Tooling',
+      'WEBRTC · CHROME DX',
+      '#312e81',
+      '#9333ea'
+    ),
   },
 ];
 
-// --- COMPONENT & INTERFACE DEFINITIONS ---
-// Define interface for project prop
-interface ProjectProps {
-  title: string;
-}
+const ProjectContent = ({ project }: { project: Project }) => (
+  <div className="space-y-10">
+    <p className="font-sans text-base font-medium tracking-wide text-neutral-500 italic dark:text-neutral-400">
+      {project.tagline}
+    </p>
 
-// This component dynamically renders the project details
-const ProjectContent = ({ project }: { project: ProjectProps }) => {
-  // Find the matching project data from the database
-  const projectData = PROJECT_CONTENT.find((p) => p.title === project.title);
-
-  if (!projectData) {
-    return <div>Project details not available</div>;
-  }
-
-  return (
-    <div className="space-y-10">
-      {/* Tagline — shown only when available */}
-      {projectData.tagline && (
-        <p className="font-sans text-base font-medium tracking-wide text-neutral-500 dark:text-neutral-400 italic">
-          {projectData.tagline}
+    <div className="rounded-3xl bg-[#F5F5F7] p-8 dark:bg-[#1D1D1F]">
+      <div className="space-y-6">
+        <span className="text-sm text-neutral-500 dark:text-neutral-400">
+          {project.date}
+        </span>
+        <p className="text-secondary-foreground font-sans text-base leading-relaxed md:text-lg">
+          {project.description}
         </p>
-      )}
-
-      {/* Header section with description */}
-      <div className="rounded-3xl bg-[#F5F5F7] p-8 dark:bg-[#1D1D1F]">
-        <div className="space-y-6">
-          <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
-            <span>{projectData.date}</span>
-          </div>
-
-          <p className="text-secondary-foreground font-sans text-base leading-relaxed md:text-lg">
-            {projectData.description}
-          </p>
-
-          {/* Tech stack */}
-          <div className="pt-4">
-            <h3 className="mb-3 text-sm tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
-              Technologies
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {projectData.techStack.map((tech, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-neutral-200 px-3 py-1 text-sm text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+        <div className="pt-4">
+          <h3 className="mb-3 text-sm tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
+            Technologies
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full bg-neutral-200 px-3 py-1 text-sm text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Links section */}
-      {projectData.links && projectData.links.length > 0 && (
-        <div className="mb-24">
-          <div className="px-6 mb-4 flex items-center gap-2">
-            <h3 className="text-sm tracking-wide text-neutral-500 dark:text-neutral-400">
-              Links
-            </h3>
-            <Link className="text-muted-foreground w-4" />
-          </div>
-          <Separator className="my-4" />
-          <div className="space-y-3">
-            {projectData.links.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-[#F5F5F7] flex items-center justify-between rounded-xl p-4 transition-colors hover:bg-[#E5E5E7] dark:bg-neutral-800 dark:hover:bg-neutral-700"
-              >
-                <span className="font-light capitalize">{link.name}</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Images gallery */}
-      {projectData.images && projectData.images.length > 0 && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 gap-4">
-            {projectData.images.map((image, index) => (
-              <div
-                key={index}
-                className="relative aspect-video overflow-hidden rounded-2xl"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
-  );
-};
 
-// --- MAIN DATA EXPORT ---
-// This is the data used by your main portfolio page.
-export const data = [
-  // 1. SynQ
-  {
-    category: 'AI-Powered LinkedIn CRM',
-    title: 'SynQ',
-    src: '/projects/synq-preview.png',
-    coverSrc: '/projects/synq-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'SynQ' }} />
-    ),
-  },
-  // 2. Poise
-  {
-    category: 'AI Subscription Intelligence',
-    title: 'Poise',
-    src: '/projects/poise-preview.png',
-    coverSrc: '/projects/poise-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'Poise' }} />
-    ),
-  },
-  // 3. CWT
-  {
-    category: 'Collective Market Intelligence',
-    title: 'CWT',
-    src: '/projects/cwt-preview.png',
-    coverSrc: '/projects/cwt-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'CWT' }} />
-    ),
-  },
-  // 4. Baghiravan
-  {
-    category: 'Luxury Fashion Collection',
-    title: 'Baghiravan',
-    src: '/projects/baghiravan-preview.png',
-    coverSrc: '/projects/baghiravan-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'Baghiravan' }} />
-    ),
-  },
-  // 5. AI Native Portfolio
-  {
-    category: 'Interactive AI Portfolio',
-    title: 'AI Native Portfolio',
-    src: '/projects/ai-portfolio-preview.png',
-    coverSrc: '/projects/ai-portfolio-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'AI Native Portfolio' }} />
-    ),
-  },
-  // 6. Mahek Porwal
-  {
-    category: 'Designer Portfolio Experience',
-    title: 'Mahek Porwal',
-    shortTitle: 'Fashion Portfolio',
-    src: '/projects/mahek-preview.png',
-    coverSrc: '/projects/mahek-cover.png',
-    content: (
-      <ProjectContent project={{ title: 'Mahek Porwal' }} />
-    ),
-  },
-  // 7. Resume Optimizer AI
-  {
-    category: 'AI Resume Assistant',
-    title: 'Resume Optimizer AI',
-    src: '/projects/resume-optimizer-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'Resume Optimizer AI' }} />
-    ),
-  },
-  // 8. Zomato Global Restaurant Analysis
-  {
-    category: 'Data Analysis & Visualization',
-    title: 'Zomato Global Restaurant Analysis',
-    shortTitle: 'Zomato Analysis',
-    src: '/projects/Zomato_coverpage.png',
-    coverSrc: '/projects/Zomato_coverpage.png',
-    content: (
-      <ProjectContent project={{ title: 'Zomato Global Restaurant Analysis' }} />
-    ),
-  },
-  // 9. IPL / RCB Performance Analytics
-  {
-    category: 'Sports Analytics & SQL',
-    title: 'IPL / RCB Performance Analytics',
-    shortTitle: 'IPL / RCB Analysis',
-    src: '/projects/IPL_RCB_coverpage.png',
-    coverSrc: '/projects/IPL_RCB_coverpage.png',
-    content: (
-      <ProjectContent project={{ title: 'IPL / RCB Performance Analytics' }} />
-    ),
-  },
-  // 10. TravelBooker
-  {
-    category: 'Full-Stack Django Platform',
-    title: 'TravelBooker',
-    src: '/projects/travelbooker-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'TravelBooker' }} />
-    ),
-  },
-  // 11. AgroAI
-  {
-    category: 'Computer Vision & AI',
-    title: 'AgroAI',
-    src: '/projects/agroai-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'AgroAI' }} />
-    ),
-  },
-  // 12. Holohype
-  {
-    category: 'AI-Powered E-Commerce',
-    title: 'Holohype',
-    src: '/projects/holohype-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'Holohype' }} />
-    ),
-  },
-  // 13. Old Portfolio
-  {
-    category: 'React Developer Portfolio',
-    title: 'Old Portfolio',
-    src: '/projects/old-portfolio-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'Old Portfolio' }} />
-    ),
-  },
-  // 14. YouTube Clone
-  {
-    category: 'Frontend Fundamentals',
-    title: 'YouTube Clone',
-    src: '/projects/yt-clone-preview.png',
-    content: (
-      <ProjectContent project={{ title: 'YouTube Clone' }} />
-    ),
-  },
-  // 15. Latency-Aware Task Partitioning
-  {
-    category: 'Edge Computing Research',
-    title: 'Latency-Aware Task Partitioning',
-    src: '/projects/RP_preview.png',
-    content: (
-      <ProjectContent project={{ title: 'Latency-Aware Task Partitioning' }} />
-    ),
-  },
-];
+    {project.links.length > 0 && (
+      <div className="mb-24">
+        <div className="mb-4 flex items-center gap-2 px-6">
+          <h3 className="text-sm tracking-wide text-neutral-500 dark:text-neutral-400">
+            Links
+          </h3>
+          <Link className="text-muted-foreground w-4" />
+        </div>
+        <Separator className="my-4" />
+        <div className="space-y-3">
+          {project.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between rounded-xl bg-[#F5F5F7] p-4 transition-colors hover:bg-[#E5E5E7] dark:bg-neutral-800 dark:hover:bg-neutral-700"
+            >
+              <span className="font-light capitalize">{link.name}</span>
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {project.images.length > 0 && (
+      <div className="grid grid-cols-1 gap-4">
+        {project.images.map((image) => (
+          <div
+            key={image.src}
+            className="relative aspect-video overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+);
+
+export const data = PROJECT_CONTENT.map((project) => ({
+  category: project.category,
+  title: project.title,
+  shortTitle: project.shortTitle,
+  src: project.cover,
+  coverSrc: project.cover,
+  content: <ProjectContent project={project} />,
+}));

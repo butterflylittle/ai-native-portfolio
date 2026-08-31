@@ -1,4 +1,4 @@
-# 🚀 Portfolio Setup Instructions for Yuvraj
+# 🚀 Portfolio Setup Instructions for @butterflylittle
 
 ## 📋 **Step 1: Install Dependencies**
 
@@ -17,6 +17,10 @@ Create a file called `.env.local` in your project root with this content:
 ```env
 # DeepSeek AI API Configuration
 DEEPSEEK_API_KEY=your_actual_deepseek_api_key_here
+
+# GitHub API Configuration
+GITHUB_TOKEN=your_github_token_here
+GITHUB_USERNAME=butterflylittle
 
 # Environment
 NODE_ENV=development
@@ -41,16 +45,16 @@ Visit `http://localhost:3000` to test your portfolio.
    - Go to [vercel.com](https://vercel.com)
    - Import your GitHub repository
    - Add environment variable: `DEEPSEEK_API_KEY` with your API key
+   - Add environment variables: `GITHUB_TOKEN` and `GITHUB_USERNAME`
 3. **Deploy!**
 
 ## ✅ **What's Been Updated:**
 
-- ✅ **Personal Information**: Yuvraj Singh, 22, Gurugram
-- ✅ **Contact Details**: Email, phone, LinkedIn, GitHub, Instagram
-- ✅ **AI Personality**: Customized with your background and experience
+- ✅ **GitHub Account**: Connected to [@butterflylittle](https://github.com/butterflylittle)
+- ✅ **GitHub Profile Card**: Displays live public profile and repository data
+- ✅ **AI Personality**: Can be customized with your background and experience
 - ✅ **API Integration**: Uses DeepSeek AI through its OpenAI-compatible API
-- ✅ **Professional Experience**: All your internships and projects
-- ✅ **Skills**: Data science, AI, machine learning focus
+- ✅ **Repository Links**: Point to `butterflylittle/ai-native-portfolio`
 
 ## 🎨 **Next Steps:**
 
@@ -62,6 +66,7 @@ Visit `http://localhost:3000` to test your portfolio.
 ## 🔧 **Troubleshooting:**
 
 If you see linter errors about missing modules:
+
 1. Make sure you ran `pnpm install`
 2. Restart your development server
 3. The errors should disappear after installation
