@@ -2,11 +2,15 @@
 
   <br />
   <p>
-    <a href="https://github.com/butterflylittle"><img src="https://avatars.githubusercontent.com/u/65402909?v=4" alt="千树同学 GitHub avatar" width="120"/></a>
+    <a href="https://github.com/butterflylittle"><img src="./public/banner.png" alt="千树同学 banner" width="120"/></a>
   </p>
   <br />
 
   <h1>🌐 World's First AI-Native Portfolio 🤖✨</h1>
+
+  <p>
+    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a>
+  </p>
 </div>
 
 ---
