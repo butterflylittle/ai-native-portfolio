@@ -16,6 +16,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { ThemeToggle } from '@/components/ui/ThemeToggle'; // Import the theme toggle
+import Link from 'next/link';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -88,7 +89,7 @@ export default function Home() {
           className="hidden bg-gradient-to-b from-neutral-500/10 to-neutral-500/0 bg-clip-text text-[10rem] leading-none font-black text-transparent select-none sm:block lg:text-[16rem]"
           style={{ marginBottom: '-2.5rem' }}
         >
-          Lucas
+          Huisen
         </div>
       </div>
 
@@ -104,10 +105,10 @@ export default function Home() {
         />
       </div>
 
-      <div className="absolute top-6 left-6 z-20">
+      <div className="absolute top-6 left-6 z-20 flex items-center gap-3">
         <button
           onClick={() => goToChat('Are you open to new opportunities?')}
-          className="relative flex cursor-pointer items-center gap-2 rounded-full border bg-white/30 px-4 py-1.5 text-sm font-medium text-black shadow-md backdrop-blur-lg transition hover:bg-white/60 dark:border-white dark:text-white dark:hover:bg-neutral-800"
+          className="relative hidden cursor-pointer items-center gap-2 rounded-full border bg-white/30 px-4 py-1.5 text-sm font-medium text-black shadow-md backdrop-blur-lg transition hover:bg-white/60 sm:flex dark:border-white dark:text-white dark:hover:bg-neutral-800"
         >
           {/* Green pulse dot */}
           <span className="relative flex h-2 w-2">
@@ -116,6 +117,12 @@ export default function Home() {
           </span>
           Looking for a talent?
         </button>
+        <Link
+          href="/about"
+          className="rounded-full border border-neutral-200 bg-white/70 px-4 py-1.5 text-sm font-medium text-neutral-800 backdrop-blur-lg transition hover:bg-white dark:border-neutral-700 dark:bg-neutral-900/70 dark:text-neutral-100 dark:hover:bg-neutral-900"
+        >
+          About / 关于
+        </Link>
       </div>
 
       {/* header */}
@@ -130,7 +137,7 @@ export default function Home() {
         </div>
 
         <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
-          你好，我是吴汇森（Lucas Wu）👋
+          你好，我是吴汇森（Huisen Wu）👋
         </h2>
         <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
           AI Portfolio
@@ -141,7 +148,7 @@ export default function Home() {
       <div className="relative z-10 h-52 w-48 overflow-hidden sm:h-72 sm:w-72">
         <img
           src="https://avatars.githubusercontent.com/u/65402909?v=4"
-          alt="Lucas Wu"
+          alt="吴汇森（Huisen Wu / Lucas Wu）"
           className="h-full w-full rounded-full object-cover"
         />
       </div>

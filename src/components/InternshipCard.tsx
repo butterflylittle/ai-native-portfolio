@@ -22,13 +22,13 @@ const InternshipCard = () => {
           <div className="bg-muted h-16 w-16 overflow-hidden rounded-full shadow-md">
             <img
               src="https://avatars.githubusercontent.com/u/65402909?v=4"
-              alt="Lucas Wu's avatar"
+              alt="Huisen Wu's avatar"
               className="h-full w-full object-cover"
             />
           </div>
           <div>
             <h2 className="text-foreground text-2xl font-semibold">
-              吴汇森（Lucas Wu）
+              吴汇森（Huisen Wu）
             </h2>
             <p className="text-muted-foreground text-sm">
               Senior Frontend Engineer

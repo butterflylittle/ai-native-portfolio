@@ -82,16 +82,7 @@ const PROJECT_CONTENT: Project[] = [
         url: 'https://github.com/butterflylittle/ai-native-portfolio',
       },
     ],
-    images: [
-      {
-        src: '/projects/ai-portfolio-home.png',
-        alt: 'AI Native Portfolio homepage',
-      },
-      {
-        src: '/projects/ai-portfolio-chat.png',
-        alt: 'AI Native Portfolio chat experience',
-      },
-    ],
+    images: [],
     cover: createProjectCover(
       'AI Portfolio',
       'NEXT.JS · DEEPSEEK',

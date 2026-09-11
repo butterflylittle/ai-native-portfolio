@@ -30,7 +30,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
       onClick={() => setIsOpen(true)}
     >
       <span className="text-base font-bold md:text-lg">LW</span>
-      <span className="sr-only">About Lucas Wu</span>
+      <span className="sr-only">About Huisen Wu</span>
     </Button>
   );
 
@@ -62,7 +62,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
             <DialogHeader className="relative flex flex-row items-start justify-between px-8 pt-8 pb-6">
               <div>
                 <DialogTitle className="flex items-center gap-2 text-4xl font-bold tracking-tight">
-                  Welcome to Lucas Wu's AI Portfolio
+                  Welcome to Huisen Wu's AI Portfolio
                 </DialogTitle>
                 <DialogDescription className="mt-2 text-base">
                   {/*My interactive AI portfolio experience*/}

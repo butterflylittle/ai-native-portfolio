@@ -8,7 +8,7 @@ import Image from 'next/image';
 export function Resume() {
   // Resume details
   const resumeDetails = {
-    title: "Lucas Wu's Resume",
+    title: "Huisen Wu's Resume",
     description: 'Senior Frontend Engineer',
     fileType: 'PDF',
     lastUpdated: 'August 2026',

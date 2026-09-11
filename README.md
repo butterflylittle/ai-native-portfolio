@@ -2,11 +2,13 @@
 
   <br />
   <p>
-    <a href="https://github.com/butterflylittle"><img src="./public/banner.png" alt="千树同学 banner" width="120"/></a>
+    <a href="https://github.com/butterflylittle"><img src="./public/banner.png" alt="Huisen Wu banner" width="120"/></a>
   </p>
   <br />
 
-  <h1>🌐 World's First AI-Native Portfolio 🤖✨</h1>
+  <h1>Huisen Wu（吴汇森）· AI-Native Portfolio</h1>
+
+  <p><strong>AI Agent Engineering · Senior Frontend Engineering</strong></p>
 
   <p>
     <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a>
@@ -31,6 +33,8 @@
 ---
 
 ### **About The Project** 💡
+
+This open-source AI-native portfolio is created and maintained by **Huisen Wu (吴汇森, also known as Lucas Wu)**. Huisen is a senior frontend engineer focused on AI Agent engineering, RAG, Agent Runtime, and full-stack AI applications. His GitHub profile is [@butterflylittle](https://github.com/butterflylittle).
 
 Static portfolios are a thing of the past. They present a one-sided, lifeless view of a developer's journey. This project explores a more conversational approach: an AI-native portfolio that visitors can interact with directly.
 
@@ -142,7 +146,7 @@ This project is open-sourced under the **MIT License**. See the [LICENSE](LICENS
 
 ### **Contact & Links** 🔗
 
-**千树同学 (@butterflylittle)** — Let's connect!
+**Huisen Wu / 吴汇森 (@butterflylittle)** — Let's connect!
 
 <div align="center">
 

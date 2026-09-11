@@ -1,31 +1,27 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import SpotifyWidget from '@/components/SpotifyWidget';
+import { siteUrl } from '@/lib/site';
 import './globals.css';
-
-const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (productionHost ? `https://${productionHost}` : 'http://localhost:3000');
-
-// Load Inter font for non-Apple devices
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: '吴汇森（Lucas Wu）｜高级前端开发工程师',
+  title: {
+    default: '吴汇森（Huisen Wu）｜AI Agent 与高级前端工程师',
+    template: '%s｜吴汇森（Huisen Wu）',
+  },
   description:
-    '吴汇森的 AI 交互式作品集，展示 5+ 年前端开发经验、技术能力与项目经历。',
+    '吴汇森（Huisen Wu，亦使用 Lucas Wu），高级前端工程师，专注 AI Agent、RAG、Agent Runtime 与全栈式 AI 应用工程。',
   keywords: [
     '吴汇森',
+    'Huisen Wu',
     'Lucas Wu',
+    'AI Agent Engineer',
+    'AI Agent',
+    'RAG',
+    'Agent Runtime',
     '高级前端开发工程师',
     'Frontend Developer',
     'Vue3',
@@ -36,19 +32,30 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'Lucas Wu',
-      url: siteUrl,
+      name: 'Huisen Wu（吴汇森）',
+      url: '/about',
     },
   ],
-  creator: 'Lucas Wu',
+  creator: 'Huisen Wu（吴汇森）',
+  publisher: 'Huisen Wu',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'zh_CN',
+    alternateLocale: 'en_US',
     url: siteUrl,
-    title: '吴汇森（Lucas Wu）｜高级前端开发工程师',
+    title: '吴汇森（Huisen Wu）｜AI Agent 与高级前端工程师',
     description:
-      '5+ 年前端开发经验，专注 Vue3、TypeScript、React、Next.js 与前端工程化。',
-    siteName: 'Lucas Wu AI Portfolio',
+      '5+ 年前端经验，专注 AI Agent、RAG、Agent Runtime、Vue3、TypeScript、React 与 Next.js。',
+    siteName: 'Huisen Wu AI Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '吴汇森（Huisen Wu）｜AI Agent 与高级前端工程师',
+    description:
+      '吴汇森的 AI 原生作品集：AI Agent、RAG、Agent Runtime 与高级前端工程。',
   },
 };
 
@@ -58,20 +65,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </head>
-      <body
-        className={cn(
-          // "min-h-screen bg-background font-sans antialiased",
-          'min-h-screen bg-white font-sans text-black antialiased transition-colors duration-500 ease-in-out dark:bg-black dark:text-white',
-          inter.variable
-        )}
-      >
+      <body className="min-h-screen bg-white font-sans text-black antialiased transition-colors duration-500 ease-in-out dark:bg-black dark:text-white">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

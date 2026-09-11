@@ -2,11 +2,13 @@
 
   <br />
   <p>
-    <a href="https://github.com/butterflylittle"><img src="./public/banner.png" alt="千树同学 banner" width="120"/></a>
+    <a href="https://github.com/butterflylittle"><img src="./public/banner.png" alt="吴汇森 banner" width="120"/></a>
   </p>
   <br />
 
-  <h1>🌐 全球首个 AI 原生作品集 🤖✨</h1>
+  <h1>吴汇森（Huisen Wu）· AI 原生作品集</h1>
+
+  <p><strong>AI Agent 工程 · 高级前端工程</strong></p>
 
   <p>
     <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a>
@@ -32,6 +34,8 @@
 
 ### **关于本项目** 💡
 
+本开源 AI 原生作品集由 **吴汇森（Huisen Wu，亦使用 Lucas Wu）** 创建并维护。吴汇森是一名高级前端工程师，当前专注 AI Agent 工程、RAG、Agent Runtime 与全栈式 AI 应用。GitHub 为 [@butterflylittle](https://github.com/butterflylittle)。
+
 静态作品集已经过时了。它们只呈现开发者经历中单薄、死板的一面。本项目探索了一种更具对话感的方式：一个访客可以直接与之互动的 AI 原生作品集。
 
 这是一个 **由 AI 驱动的交互式作品集**，把「关于我」页面变成了动态、有吸引力的对话。它不再让招聘者、开发者、朋友无休止地滚动信息，而是邀请他们直接提问，并获得专门为他们量身定制的回答。
@@ -52,13 +56,13 @@
 
 ### **技术栈** 🛠️
 
-| **分类**         | **技术**                                                                                                                                                |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **前端**         | [Next.js](https://nextjs.org/)、[React](https://reactjs.org/)、[Tailwind CSS](https://tailwindcss.com/)、[Framer Motion](https://www.framer.com/motion/) |
-| **后端**         | [Node.js](https://nodejs.org/)、Next.js API Routes                                                                                                      |
-| **AI 与 API**    | [OpenAI API](https://openai.com/)、[DeepSeek API](https://api-docs.deepseek.com/)、[GitHub API](https://docs.github.com/en/rest)                        |
-| **部署**         | [Vercel](https://vercel.com/)                                                                                                                           |
-| **包管理器**     | [pnpm](https://pnpm.io/)                                                                                                                                |
+| **分类**      | **技术**                                                                                                                                                 |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **前端**      | [Next.js](https://nextjs.org/)、[React](https://reactjs.org/)、[Tailwind CSS](https://tailwindcss.com/)、[Framer Motion](https://www.framer.com/motion/) |
+| **后端**      | [Node.js](https://nodejs.org/)、Next.js API Routes                                                                                                       |
+| **AI 与 API** | [OpenAI API](https://openai.com/)、[DeepSeek API](https://api-docs.deepseek.com/)、[GitHub API](https://docs.github.com/en/rest)                         |
+| **部署**      | [Vercel](https://vercel.com/)                                                                                                                            |
+| **包管理器**  | [pnpm](https://pnpm.io/)                                                                                                                                 |
 
 ---
 
@@ -142,7 +146,7 @@
 
 ### **联系与链接** 🔗
 
-**千树同学 (@butterflylittle)** — 来交个朋友吧！
+**吴汇森 / Huisen Wu (@butterflylittle)** — 欢迎交流！
 
 <div align="center">
 

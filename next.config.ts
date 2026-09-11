@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'assets.aceternity.com'],
-  },
-  eslint: {
-    // Does NOT block the build on eslint errors
-    ignoreDuringBuilds: true,
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'assets.aceternity.com' },
+    ],
   },
 };
 

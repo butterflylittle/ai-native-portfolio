@@ -57,7 +57,7 @@ const Avatar = dynamic<AvatarProps>(
           >
             <img
               src="https://avatars.githubusercontent.com/u/65402909?v=4"
-              alt="Lucas Wu"
+              alt="Huisen Wu"
               className="h-full w-full rounded-full object-cover"
             />
           </div>

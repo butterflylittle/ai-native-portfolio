@@ -6,8 +6,8 @@ import React from 'react';
 export function Presentation() {
   // Personal information
   const profile = {
-    name: '吴汇森（Lucas Wu）',
-    role: '高级前端开发工程师 · 5+ 年经验',
+    name: '吴汇森（Huisen Wu）',
+    role: 'AI Agent 工程 · 高级前端开发 · 5+ 年经验',
     description:
       '专注 Vue3、TypeScript、React、Next.js 与前端工程化，具备企业级后台、云平台、数据可视化、响应式官网和 AI 应用交付经验。',
     src: 'https://avatars.githubusercontent.com/u/65402909?v=4',
