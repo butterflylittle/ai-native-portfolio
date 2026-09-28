@@ -27,6 +27,26 @@ const focuses = [
 
 const selectedWork = [
   {
+    name: 'AI 今日雷达 / AI News',
+    type: 'AI 信息产品 · 已上线',
+    description:
+      '私人、本地优先的 AI 资讯工作台。每天 09:00 聚合 RSS 与 RSSHub 信源，以来源权重、新鲜度、一手来源和跨源印证进行可解释排序，并保存每日数据与 Markdown。',
+    links: [
+      { label: 'Live', href: 'https://ai-news-red-one.vercel.app' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/butterflylittle/ai-news',
+      },
+    ],
+  },
+  {
+    name: 'F1 Three.js — Papaya Experience',
+    type: 'Three.js 体验 · 已完成',
+    description:
+      '基于 Three.js、TypeScript 与 Vite 构建的 McLaren MCL35M 交互展厅，以统一速度状态驱动 360° 查看、追逐相机、GLSL 速度线、气流、DRS、HUD 与合成音效，并针对移动端优化模型和渲染。',
+    links: [{ label: 'Live', href: 'https://f1-threejs.vercel.app/' }],
+  },
+  {
     name: 'AI Native Portfolio',
     type: 'AI 产品 · 已上线',
     description:
@@ -199,9 +219,27 @@ export default function AboutPage() {
                     {work.type}
                   </p>
                 </div>
-                <p className="text-sm leading-7 text-neutral-600 dark:text-neutral-400">
-                  {work.description}
-                </p>
+                <div>
+                  <p className="text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+                    {work.description}
+                  </p>
+                  {work.links && (
+                    <div className="mt-4 flex flex-wrap gap-4">
+                      {work.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-1 font-mono text-[11px] tracking-wide text-[#b44725] uppercase hover:underline"
+                        >
+                          {link.label}
+                          <ArrowUpRight className="h-3 w-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </article>
             ))}
           </div>
